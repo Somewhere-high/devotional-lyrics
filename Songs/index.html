@@ -5,79 +5,410 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Devotional Lyrics - Home</title>
     <style>
-        :root { --bg: #ffffff; --fg: #111827; --accent: #0ea5e9; --muted: #6b7280; }
-        [data-theme="dark"] { --bg: #0b1220; --fg: #e6eef6; --accent: #38bdf8; --muted: #9aa4b2; }
+        :root { 
+            --bg: #ffffff; 
+            --fg: #111827; 
+            --accent: #0ea5e9; 
+            --muted: #6b7280; 
+            --card-bg: rgba(0,0,0,0.03);
+            --card-hover: #0ea5e9;
+            --border-radius: 12px;
+            --shadow: 0 4px 6px rgba(0,0,0,0.05);
+            --transition: all 0.3s ease;
+        }
+        [data-theme="dark"] { 
+            --bg: #0b1220; 
+            --fg: #e6eef6; 
+            --accent: #38bdf8; 
+            --muted: #9aa4b2; 
+            --card-bg: rgba(255,255,255,0.05);
+            --card-hover: #1e40af;
+            --shadow: 0 4px 20px rgba(0,0,0,0.25);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         
         body { 
-            background: var(--bg); color: var(--fg); 
-            font-family: -apple-system, system-ui, sans-serif; 
-            margin: 0; padding: 0; transition: background 0.3s;
+            background: var(--bg); 
+            color: var(--fg); 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; 
+            line-height: 1.6;
+            transition: var(--transition);
+            padding-bottom: 3rem;
         }
-        .container { max-width: 700px; margin: 0 auto; padding: 2rem; }
-        header { border-bottom: 1px solid var(--muted); padding-bottom: 1rem; margin-bottom: 2rem; }
-        h1 { font-size: 1.5rem; margin: 0; }
+        
+        .container { 
+            max-width: 800px; 
+            margin: 0 auto; 
+            padding: 1.5rem; 
+        }
+        
+        header { 
+            text-align: center; 
+            padding: 2rem 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--muted);
+        }
+        
+        h1 { 
+            font-size: 2.5rem; 
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, #8b5cf6, #ec4899);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 800;
+        }
+        
+        .subtitle {
+            color: var(--muted);
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
         
         .search-box {
-            width: 100%; padding: 0.8rem; margin-bottom: 2rem;
-            border: 1px solid var(--muted); border-radius: 8px;
-            background: var(--bg); color: var(--fg); font-size: 1rem;
+            flex: 1;
+            min-width: 250px;
+            padding: 0.9rem 1.2rem;
+            border: 1px solid var(--muted);
+            border-radius: 50px;
+            background: var(--card-bg);
+            color: var(--fg);
+            font-size: 1rem;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
         }
-
-        .song-list { list-style: none; padding: 0; }
-        .song-item { 
-            margin-bottom: 0.5rem; border-radius: 8px;
-            transition: transform 0.1s;
-        }
-        .song-link {
-            display: block; padding: 1rem; text-decoration: none;
-            color: var(--fg); background: rgba(0,0,0,0.03);
-            border-radius: 8px; border-left: 4px solid var(--accent);
-        }
-        [data-theme="dark"] .song-link { background: rgba(255,255,255,0.05); }
-        .song-link:hover { background: var(--accent); color: white; transform: translateX(5px); }
         
-        .artist-tag { font-size: 0.85rem; color: var(--muted); display: block; margin-top: 0.3rem; }
-        .song-link:hover .artist-tag { color: #e0f2fe; }
+        .search-box:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.2);
+        }
+        
+        .theme-toggle {
+            background: var(--card-bg);
+            border: 1px solid var(--muted);
+            color: var(--fg);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+        
+        .theme-toggle:hover {
+            background: var(--accent);
+            color: white;
+            transform: rotate(20deg);
+        }
+        
+        .song-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .song-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        [data-theme="dark"] .song-card {
+            border-color: rgba(255,255,255,0.1);
+        }
+        
+        .song-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-color: var(--accent);
+        }
+        
+        .song-link {
+            display: block;
+            padding: 1.5rem;
+            text-decoration: none;
+            color: var(--fg);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .song-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+            color: var(--accent);
+        }
+        
+        .song-artist {
+            color: var(--muted);
+            font-size: 0.95rem;
+            margin-top: auto;
+            padding-top: 0.8rem;
+            border-top: 1px dashed var(--muted);
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: var(--muted);
+            grid-column: 1 / -1;
+        }
+        
+        .empty-state p {
+            margin-top: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .instructions {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin-top: 2rem;
+            border-left: 4px solid var(--accent);
+        }
+        
+        .instructions h2 {
+            margin-bottom: 0.8rem;
+            color: var(--accent);
+        }
+        
+        .instructions ol {
+            padding-left: 1.5rem;
+            margin-top: 0.8rem;
+            color: var(--muted);
+        }
+        
+        .instructions li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .add-song-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        .add-song-section h2 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .add-song-section p {
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+        
+        .add-song-code {
+            background: rgba(0,0,0,0.2);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: monospace;
+            text-align: left;
+            overflow-x: auto;
+        }
+        
+        @media (max-width: 600px) {
+            .song-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .theme-toggle {
+                width: 45px;
+                height: 45px;
+                align-self: center;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
     </style>
 </head>
 <body>
-
-<div class="container">
-    <header>
-        <h1>🙏 Devotional Lyrics</h1>
-    </header>
-
-    <input type="text" id="searchInput" class="search-box" placeholder="Search for a song or artist...">
-
-    <ul class="song-list" id="songList">
-        <li class="song-item">
-            <a href="gananayakane-karunakarane.html" class="song-link">
-                கணநாயகனே கருணாகரனே
-                <span class="artist-tag">Artist: K.Veeramani</span>
-            </a>
-        </li>
+    <div class="container">
+        <header>
+            <h1>🙏 Devotional Lyrics</h1>
+            <p class="subtitle">Sacred hymns and devotional songs for spiritual upliftment</p>
+        </header>
         
-        </ul>
-</div>
+        <div class="controls">
+            <input type="text" id="searchInput" class="search-box" placeholder="Search for a song or artist...">
+            <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">☀️</button>
+        </div>
+        
+        <div class="song-grid" id="songGrid">
+            <!-- Songs will be dynamically inserted here -->
+        </div>
+        
+        <div class="add-song-section">
+            <h2>✨ Add New Song</h2>
+            <p>To add a new song, simply scroll to the bottom of this HTML file and add to the songs array:</p>
+            <div class="add-song-code">
+// Add this to the songs array at the bottom of this file:<br>
+{<br>
+&nbsp;&nbsp;title: "Your Song Title",<br>
+&nbsp;&nbsp;artist: "Artist Name",<br>
+&nbsp;&nbsp;filename: "your-song-filename.html"<br>
+}
+            </div>
+            <p><strong>That's it!</strong> Save the file and refresh your browser.</p>
+        </div>
+        
+        <div class="instructions">
+            <h2>Features</h2>
+            <ul>
+                <li>🕗 Press "T" key to toggle between light/dark mode</li>
+                <li>🔍 Search songs by title or artist</li>
+                <li>🌙 Theme preference saved automatically</li>
+                <li>📱 Fully responsive design for all devices</li>
+            </ul>
+        </div>
+    </div>
 
-<script>
-    // Simple Search Logic
-    const searchInput = document.getElementById('searchInput');
-    const listItems = document.querySelectorAll('.song-item');
-
-    searchInput.addEventListener('input', (e) => {
-        const term = e.target.value.toLowerCase();
-        listItems.forEach(item => {
-            const text = item.textContent.toLowerCase();
-            item.style.display = text.includes(term) ? 'block' : 'none';
+    <script>
+        // DOM Elements
+        const songGrid = document.getElementById('songGrid');
+        const searchInput = document.getElementById('searchInput');
+        const themeToggle = document.getElementById('themeToggle');
+        
+        // Theme Toggle
+        const savedTheme = localStorage.getItem('devotional-theme');
+        if (savedTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            themeToggle.textContent = '🌙';
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            if (document.documentElement.hasAttribute('data-theme')) {
+                document.documentElement.removeAttribute('data-theme');
+                localStorage.setItem('devotional-theme', 'light');
+                themeToggle.textContent = '☀️';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('devotional-theme', 'dark');
+                themeToggle.textContent = '🌙';
+            }
         });
-    });
-
-    // Match Theme with your songs
-    if (localStorage.getItem('devotional-theme') === 'dark') {
-        document.documentElement.setAttribute('data-theme', 'dark');
-    }
-</script>
-
+        
+        // Render Songs
+        function renderSongs(songList) {
+            songGrid.innerHTML = '';
+            
+            if (songList.length === 0) {
+                songGrid.innerHTML = `
+                    <div class="empty-state">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">😕</div>
+                        <h2>No songs found</h2>
+                        <p>Try adjusting your search terms</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            songList.forEach(song => {
+                const songCard = document.createElement('div');
+                songCard.className = 'song-card';
+                songCard.innerHTML = `
+                    <a href="${song.filename}" class="song-link">
+                        <div class="song-title">${song.title}</div>
+                        <div class="song-artist">Artist: ${song.artist}</div>
+                    </a>
+                `;
+                songGrid.appendChild(songCard);
+            });
+        }
+        
+        // Search functionality
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const filteredSongs = songs.filter(song => 
+                song.title.toLowerCase().includes(searchTerm) || 
+                song.artist.toLowerCase().includes(searchTerm)
+            );
+            renderSongs(filteredSongs);
+        });
+        
+        // Add keyboard shortcut for theme toggle (T key)
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 't' || e.key === 'T') {
+                themeToggle.click();
+            }
+        });
+        
+        // Initialize the app - this will be called after songs array is defined
+        function initApp() {
+            renderSongs(songs);
+        }
+    </script>
+    
+    <!-- ADD NEW SONGS BELOW THIS LINE -->
+    <script>
+        // Song database - ADD NEW SONGS HERE at the bottom of the file!
+        const songs = [
+            {
+                title: "கணநாயகனே கருணாகரனே",
+                artist: "K.Veeramani",
+                filename: "gananayakane-karunakarane.html"
+            },
+            {
+                title: "கந்த சஷ்டி கவசம்",
+                artist: "Traditional",
+                filename: "srikandhasashtikavasam.html"
+            },
+            {
+                title: "கந்தர் அனுபூதி",
+                artist: "Saint Arunagirinathar",
+                filename: "kandharsanubhuthi.html"
+            }
+            // ADD NEW SONGS HERE by copying the format above
+            // Example:
+            // {
+            //     title: "Your Song Title",
+            //     artist: "Artist Name",
+            //     filename: "your-song-filename.html"
+            // },
+        ];
+        
+        // Initialize the application after songs are loaded
+        initApp();
+    </script>
 </body>
 </html>
+
