@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>கந்த சஷ்டி கவசம் - முழு வரிகள்</title>
+    <meta name="description" content="கந்த சஷ்டி கவசம் முழு வரிகள். தேவராய சுவாமிகள் இயற்றிய பாரம்பரிய பக்தி பாடல்.">
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MusicComposition",
+      "name": "கந்த சஷ்டி கவசம்",
+      "lyricist": "தேவராய சுவாமிகள்",
+      "publisher": "பாரம்பரியம்",
+      "inLanguage": "ta"
+    }
+    </script>
+
+    <style>
+    :root {
+        --bg: #ffffff; --fg: #111827; --muted: #6b7280; --accent: #0ea5e9; --maxw: 800px;
+    }
+    [data-theme="dark"] { 
+        --bg: #0b1220; --fg: #e6eef6; --muted: #9aa4b2; --accent: #38bdf8; 
+    }
+    
+    body.song-page { 
+        background: var(--bg); color: var(--fg); margin: 0; 
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+        transition: background 0.3s ease;
+        line-height: 1.6;
+    }
+    
+    .container { max-width: var(--maxw); margin: 0 auto; padding: 1.5rem; }
+    
+    /* Navigation & Toolbar */
+    .nav-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem; }
+    .home-link { text-decoration: none; color: var(--accent); font-weight: 600; font-size: 0.95rem; display: flex; align-items: center; gap: 0.5rem; }
+    .toolbar { display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: flex-end; }
+    
+    .btn { 
+        background: transparent; border: 1px solid var(--muted); color: var(--fg); 
+        padding: 0.4rem 0.7rem; border-radius: 6px; cursor: pointer; font-size: 0.85rem;
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+    }
+    .btn:hover { border-color: var(--accent); color: var(--accent); }
+    .btn-copy { background: var(--accent); color: white; border: none; }
+    .btn-copy:hover { opacity: 0.9; color: white; }
+    .btn-download { background: linear-gradient(to right, #8b5cf6, #ec4899); color: white; border: none; }
+    .btn-download:hover { opacity: 0.9; }
+
+    /* Content Styling */
+    .title { 
+        text-align: center; margin-bottom: 0.5rem; font-size: 2rem; color: var(--fg); 
+        background: linear-gradient(to right, #8b5cf6, #ec4899);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        font-weight: 800;
+        margin-top: 1rem;
+    }
+    .subtitle { 
+        text-align: center; color: var(--muted); margin-bottom: 1.5rem; font-size: 1.1rem; 
+        font-style: italic;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .artist { 
+        text-align: center; color: var(--muted); margin-bottom: 2rem; font-size: 1rem; 
+        border-top: 1px solid var(--muted);
+        border-bottom: 1px solid var(--muted);
+        padding: 0.8rem 0;
+        margin-top: 1rem;
+    }
+    
+    .lyrics { 
+        white-space: pre-line; line-height: 2.1; font-size: 1.15rem; 
+        padding: 2rem; border-radius: 16px; 
+        background: rgba(0,0,0,0.03); 
+        letter-spacing: 0.02rem;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        margin-bottom: 2rem;
+        position: relative;
+        max-height: 70vh;
+        overflow-y: auto;
+    }
+    [data-theme="dark"] .lyrics { 
+        background: rgba(255,255,255,0.05); 
+        box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+    }
+    
+    /* Font size adjustments - fixed specificity */
+    .lyrics.small {
+        font-size: 1rem !important;
+        line-height: 1.9 !important;
+    }
+    .lyrics.large {
+        font-size: 1.4rem !important;
+        line-height: 2.4 !important;
+    }
+
+    .footer-note {
+        text-align: center;
+        margin-top: 2rem;
+        padding: 1.5rem;
+        border-top: 1px solid var(--muted);
+        color: var(--muted);
+        font-size: 0.9rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    @media (max-width: 600px) {
+        .nav-header { flex-direction: column; align-items: stretch; }
+        .toolbar { width: 100%; justify-content: space-between; }
+        .lyrics { font-size: 1.1rem; padding: 1.5rem; line-height: 2; }
+        .title { font-size: 1.7rem; }
+        .btn { padding: 0.5rem; font-size: 0.8rem; }
+        
+        /* Mobile font size adjustments */
+        .lyrics.small {
+            font-size: 0.95rem !important;
+            line-height: 1.8 !important;
+        }
+        .lyrics.large {
+            font-size: 1.3rem !important;
+            line-height: 2.2 !important;
+        }
+    }
+    
+    /* Scrollbar styling */
+    .lyrics::-webkit-scrollbar {
+        width: 8px;
+    }
+    .lyrics::-webkit-scrollbar-track {
+        background: rgba(0,0,0,0.05);
+        border-radius: 4px;
+    }
+    .lyrics::-webkit-scrollbar-thumb {
+        background: var(--accent);
+        border-radius: 4px;
+    }
+    [data-theme="dark"] .lyrics::-webkit-scrollbar-track {
+        background: rgba(255,255,255,0.1);
+    }
+    [data-theme="dark"] .lyrics::-webkit-scrollbar-thumb {
+        background: #4f46e5;
+    }
+    </style>
+</head>
+<body class="song-page">
+
+<div class="container" id="song-root">
+    <div class="nav-header">
+        <a href="../index.html" class="home-link">← Home</a>
+        <div class="toolbar">
+            <div style="display:flex; gap: 0.3rem;">
+                <button class="btn" id="dec" title="Decrease font size">A-</button>
+                <button class="btn" id="reset" title="Reset font size">A</button>
+                <button class="btn" id="inc" title="Increase font size">A+</button>
+            </div>
+            <div style="display:flex; gap: 0.3rem;">
+                <button class="btn" id="theme-toggle">Dark Mode</button>
+                <button class="btn btn-copy" id="copy-btn">Copy</button>
+                <button class="btn btn-download" id="download-btn">Download</button>
+            </div>
+        </div>
+    </div>
+
+    <h1 class="title">கந்த சஷ்டி கவசம்</h1>
+    <p class="subtitle">தேவராய சுவாமிகள் இயற்றிய பாரம்பரிய பக்தி பாடல்</p>
+    <p class="artist">Composer: Devaraya Swamigal | Deity: Lord Murugan</p>
+
+    <article class="lyrics" id="lyrics">
+குறள் வெண்பா
+
+துதிப்போர்க்கு வல்வினைபோம்… துன்பம் போம்,
+நெஞ்சில் பதிப்போர்க்குச் செல்வம் பலித்துக் கதித்து ஓங்கும்,
+நிஷ்டையுங் கைகூடும்…
+நிமலர் அருள், கந்தர் சஷ்டி கவசந் தனை….
+
+காப்பு
+
+அமரர் இடர்தீர அமரம் புரிந்த
+குமரன் அடி நெஞ்சே குறி…
+
+நூல்
+
+சஷ்டியை நோக்க சரவணபவனார்
+சிஷ்டருக் குதவும் செங்கதிர் வேலோன்
+பாதமிரண்டில் பன்மணிச் சதங்கை
+கீதம் பாட கிண்கிணி யாட(4) (இரண்டு முறை பாடவும்)
+
+மையல் நடஞ்செய்யும் மயில்வாகனனார்
+கையில் வேலால் எனைக் காக்கவென்றுவந்து
+வர வர வேலா யுதனார் வருக
+வருக வருக மயிலோன் வருக…. (8)
+
+இந்திர முதலா எண்திசை போற்ற
+மந்திர வடிவேல் வருக வருக..
+வாசவன் மருகா வருக வருக,
+நேசக் குறமகள் நினைவோன் வருக (12)
+
+ஆறுமுகம் படைத்த ஐயா வருக
+நீறிடும் வேலவன் நித்தம் வருக
+சிரகிரி வேலவன் சீக்கிரம் வருக
+சரஹணபவனார் சடுதியில் வருக….. (16)
+
+ரஹண பவ ச ரரரர ரரர
+ரிஹண பவ ச ரிரிரிரி ரிரிரி
+விணபவ சரஹண வீரா நமோ நம
+நிபவ சரஹண நிறநிற நிறென
+
+வசர ஹணப வருக வருக
+அசுரர் குடிகெடுத்த ஐயா வருக
+என்னை ஆளும் இளையோன் கையில்
+பன்னிரண்டா யுதம் பாச அங்குசமும் (24)
+
+பரந்த விழிகள் பன்னிரு கண்ணிலங்க
+விரைந்தெனைக் காக்க வேலோன்வருக
+ஐயும் கிலியும் அடைவுடன்செளவும்
+உய்யொளி செளவும் உயிர் ஐயும் கிலியும்
+
+கிலியும் செளவும் கிளரொளி ஐயும்
+நிலை பெற் றென்முன் நித்தம் ஒளிரும்
+சண்முகம் நீயும் தணியொளி யொவ்வும்
+குண்டலி யாம் சிவ குகன்தினம் வருக (32)
+
+ஆறுமுகமும் அணிமுடி ஆறும்
+நீறிடு நெற்றியும் நீண்ட புருவமும்
+பன்னிரு கண்ணும் பவளச் செவ்வாயும்
+நன்னெறி நெற்றியில் நவமணிச் சுட்டியும்.
+
+ஈராறு செவியில் இலகு குண்டலமும்
+ஆறிரு திண்புயத் தழகிய மார்பில்
+பல் பூஷணமும் பதக்கமும் தரித்து
+நன்மணி பூண்ட நவரத்ன மாலையும்
+முப்புரி நூலும் முத்தணி மார்பும்
+செப்பழகுடைய திருவயிறு உந்தியும்
+துவண்ட மருங்கில் சுடரொளிப் பட்டும்
+நவரத்தினம் பதித்த நற்சீராவும்
+இருதொடை அழகும் இணைமுழந்தாளும் (45)
+
+திருவடி யதனில் சிலம்பொலி முழங்க
+செககண செககண செககண செகண
+மொகமொக மொகமொக மொகமொக மொகென
+நகநக நகநக நகநக நகென
+டிகுகுண டிகுடிகு டிகுகுண டிகுண (50)
+
+ரரரர ரரரர ரரரர ரரர
+ரிரிரிரி ரிரிரிரி ரிரிரிரி ரிரிரி
+டுடுடுடு டுடுடுடு டுடுடுடு டுடுடு
+டகுடகு டிகுடிகு டங்கு டிங்குகு
+விந்து விந்து மயிலோன் விந்து
+முந்து முந்து முருகவேள் முந்து (56)
+
+என்றனை யாளும் ஏரகச் செல்வ
+மைந்தன் வேண்டும் வரமகிழ்ந்து தவும்
+லாலா லாலா லாலா வேசமும்
+லீலா லீலா லீலா வினோதனென்று (60)
+
+உன்திரு வடியை உருதி யென்றெண்ணும்
+என்தலை வைத்துன் இணையடி காக்க
+என் உயிர்க் குயிராம் இறைவன் காக்க
+பன்னிரு விழியால் பாலனைக் காக்க
+அடியேன் வதனம் அழகுவேல் காக்க (65)
+
+பொடிபுனை நெற்றியைப் புனிதவேல் காக்க
+கதிர்வேல் இரண்டும் கண்ணினைக் காக்க
+விதிசெவி யிரண்டும் வேலவர் காக்க
+நாசிகளிரண்டும் நல்வேல் காக்க
+பேசிய வாய்தனைப் பெருவேல் காக்க
+முப்பத் திருபல் முனைவேல் காக்க
+செப்பிய நாவைச் செவ்வேல் காக்க (72)
+
+கன்னமிரண்டும் கதிர்வேல் காக்க
+என்னிளங் கழுத்தை இனியவேல் காக்க
+மார்பை ரத்ன வடிவேல் காக்க
+சேரிள முலைமார் திருவேல் காக்க
+
+வடிவே லிருதோள் வளம்பெறக் காக்க
+பிடரிக ளிரண்டும் பெருவேல் காக்க
+அழகுடன் முதுகை அருள்வேல் காக்க
+பழுபதி னாறும் பருவேல் காக்க (80)
+
+வெற்றிவேல் வயிற்றை விளங்கவே காக்க
+சிற்றிடை அழகுறச் செவ்வேல் காக்க
+நாண் ஆம் கயிற்றை நல்வேல் காக்க
+ஆண்பெண் குறிகளை அயில்வேல் காக்க
+பிட்ட மிரண்டும் பெருவேல் காக்க
+வட்டக் குதத்தை வல்வேல் காக்க
+பணைத்தொடை யிரண்டும் பருவேல் காக்க
+கணைக்கால் முழந்தாள் கதிர்வேல் காக்க (88)
+
+ஐவிரல் அடியிணை அருள்வேல் காக்க
+கைக ளிரண்டும் கருணைவேல் காக்க
+முன்கையிரண்டும் முரண்வேல் காக்க
+பின்கையிரண்டும் பின்னவள் இருக்க
+
+நாவில் சரஸ்வதி நற்றுணை ஆக
+நாபிக் கமலம் நல்வேல் காக்க
+முப்பால் நாடியை முனை வேல் காக்க
+எப்பொழுதும் எனை எதிர்வேல் காக்க
+அடியேன் வசனம் அசைவுள நேரம்
+கடுகவே வந்து கனக வேல் காக்க
+வரும் பகல் தன்னில் வச்சிரவேல் காக்க
+அறையிருள் தன்னில் அனையவேல் காக்க (100)
+
+ஏமத்தில் சாமத்தில் எதிர்வேல் காக்க
+தாமதம் நீக்கிச் சதுர்வேல் காக்க
+காக்க காக்க கனகவேல் காக்க
+நோக்க நோக்க நொடியில் நோக்க (104)
+
+தாக்கத் தாக்கத் தடையறத் தாக்க
+பார்க்கப் பார்க்கப் பாவம் பொடிபட
+பில்லி சூனியம் பெரும்பகை அகல
+வல்ல பூதம் வலாஷ்டிகப் பேய்கள
+
+அல்லற் படுத்தும் அடங்கா முனியும்
+பிள்ளைகள் தின்னும் புழக்கடை முனியும்
+கொள்ளிவாய்ப் பேய்களும் குறளைப் பேய்களும்
+பெண்களைத் தொடரும் பிரமராட்சதரும்
+அடியனைக் கண்டால் அலறிக்கலங்கிட
+இரிசிக் காட்டேரி இத்துன்ப சேனையும்
+எல்லினும் இருட்டினும் எதிர்படும் அண்ணரும்
+கனபூசை கொள்ளும் காளியோடனே வரும்
+விட்டாங் காரரும் மிகுபல பேய்களும்
+தண்டியக் காரரும் சண்டாளர்களும்
+என்பெயர் சொல்லவும் இடிவிழுந்தோடிட… (119)
+
+ஆனை அடியினில் அரும்பாவைகளும்
+பூனை மயிரும் பிள்ளைகள் என்பும்
+நகமும் மயிரும் நீண்முடி மண்டையும்
+பாவைகளுடனே பலகலசத்துடன்
+
+மனையிற் புதைத்த வஞ்சனை தனையும்
+ஒட்டியச் செருக்கும் ஒட்டியப் பாவையும்
+காசும் பணமும் காவுடன் சோறும்
+ஓதும் அஞ்சனமும் ஒருவழிப் போக்கும்
+அடியனைக் கண்டால் அலைந்து குலைந்திட
+மாற்றார் வஞ்சகர் வந்து வணங்கிட
+கால தூதாள் எனைக்கண்டாற் கலங்கிட
+அஞ்சி நடுங்கிட அரண்டு புரண்டிட
+வாய்விட்டலறி மதிகெட்டோட
+படியினில் முட்ட பாசக்கயிற்றால்
+கட்டுடன் அங்கம் கதறிடக் கட்டு
+கட்டி உருட்டு கால்கை முறிய
+கட்டு கட்டு கதறிடக் கட்டு
+முட்டு முட்டு முழிகள் பிதுங்கிட
+செக்கு செக்கு செதில் செதிலாக
+சொக்கு சொக்குச் சூர்ப்பகைச் சொக்கு (139)
+
+குத்து குத்து கூர்வடி வேலால்
+பற்று பற்று பகலவன் தணலெரி
+தணலெரி தணலெரி தணலது வாக
+விடு விடு வேலை வெருண்டது வோட
+
+புலியும் நரியும் புன்னரி நாயும்
+எலியும் கரடியும் இனித்தொடர்ந் தோட
+தேளும் பாம்பும் செய்யான் பூரான்
+கடிவிட விஷங்கள் கடித்துய ரங்கம்
+ஏறிய விஷங்கள் எளிதுடன் இறங்க
+ஒளிப்புஞ் சுளுக்கும் ஒருதலை நோயும்
+வாதம் சயித்தியம் வலிப்புப் பித்தம்
+சூலைசயங் குன்மம் சொக்குச் சிரங்கு
+குடைச்சல் சிலந்தி குடல்விப் பிருதி
+பக்கப் பிளவை படர் தொடை வாழை
+கடுவன் படுவன் கைத்தாள் சிலந்தி
+பற்குத்து அரணை பருஅரை யாப்பும் (155)
+
+எல்லாப் பிணியும் எந்தனைக் கண்டால்
+நில்லா தோட நீ எனக் கருள்வாய்
+ஈரேழ் உலகமும் எனக்கு உறவாக
+ஆணும் பெண்ணும் அனைவரும் எனக்கா
+
+மண்ணா ளரசரும் மகிழ்ந்துற வாகவும்
+உன்னைத் துதிக்க உன் திருநாமம்
+சரஹண பவனே சைலொளி பவனே
+திரிபுர பவனே திகழொளி பவனே
+பரிபுர பவனே பவம்ஒளி பவனே
+அரிதிரு மருகா அமரா பதியைக்
+காத்துத் தேவர்கள் கடுஞ்சிறை விடுத்தாய்
+கந்தா குகனே கதிர்வேலவனே
+
+கார்த்திகை மைந்தா கடம்பா கடம்பனே
+இடும்பனை அழித்த இனியவேல் முருகா
+தணிகா சலனே சங்கரன் புதல்வா
+கதிர்கா மத்துறை கதிர்வேல் முருகா (171)
+
+பழநிப் பதிவாழ் பால குமாரா
+ஆவினன் குடிவாழ் அழகிய வேலா
+செந்தின்மா மலையுறும் செங்கல்வராயா
+சமரா புரிவாழ் சண்முகத் தரசே (175)
+
+காரார் குழலாள் கலைமகள் நன்றாய்
+என்நா இருக்க யான் உனைப் பாட
+எனைத்தொடர்ந் திருக்கும் எந்தை முருகனைப்
+பாடினேன் ஆடினேன் பரவசமாக
+ஆடினேன் நாடினேன் ஆவினன் பூதியை (180)
+
+நேச முடன்யான் நெற்றியில் அணியப்
+பாச வினைகள் பற்றது நீங்கி
+உன்பதம் பெறவே உன்னருளாக
+அன்புடன் இரக்ஷி அன்னமுஞ் சொன்னமும் (184)
+
+மெத்த மெத் தாக வேலா யுதனார்
+சித்திபெற் றடியேன் சிறப்புடன் வாழ்க
+வாழ்க வாழ்க மயிலோன் வாழ்க
+வாழ்க வாழ்க வடிவேல் வாழ்க
+வாழ்க வாழ்க மலைக்குரு வாழ்க
+வாழ்க வாழ்க மலைக்குற மகளுடன்
+வாழ்க வாழ்க வாரணத்துவசம் (191)
+
+வாழ்க வாழ்க என் வறுமைகள் நீங்க
+எத்தனை குறைகள் எத்தனை பிழைகள்
+எத்தனை யடியேன் எத்தனை செய்தால்
+பெற்றவன் நீ குரு பொறுப்பது உன் கடன் (195)
+
+பெற்றவள்குறமகள் பெற்றவளாமே
+பிள்ளையென் றன்பாய் பிரிய மளித்து
+மைந்தனென் மீது உன் மனமகிழ் ந்தருளித்
+தஞ்சமென் றடியார் தழைத்திட அருள் செய்
+கந்தர் சஷ்டி கவசம் விரும்பிய
+பாலன் தேவ ராயன் பகர்ந்ததைக்
+காலையில் மாலையில் கருத்துடன் நாளும்
+ஆசா ரத்துடன் அங்கந் துலக்கி
+நேச முடன்ஒரு நினைவது வாகி
+கந்தர் சஷ்டிக் கவசம் இதனைச்
+சிந்தை கலங்காது தியானிப்பவர்கள்
+ஒருநாள் முப்பத் தாறுருக் கொண்டு
+
+ஓதியே செபித்து உகந்து நீறணிய (208)
+அஷ்டதிக் குள்ளோர் அடங்கலும் வசமாய்த்
+திசைமன்ன ரெண்மர் செயலது அருளுவர்
+மாற்றல ரெல்லாம் வந்து வணங்குவர்
+நவகோள் மகிழ்ந்து நன்மை யளித்திடும்
+நவமத னெனவும் நல்லெழில் பெறுவர்
+எந்த நாளுமீ ரெட்டா வாழ்வர்
+கந்தர்கை வேலாம் கவசத் தடியை (215)
+
+வழியாற் காண மெய்யாய் விளங்கும்
+விழியாற் காண வெருண்டிடும் பேய்கள்
+பொல்லா தவரைப் பொடிப் பொடியாக்கும்
+நல்லோர் நினைவில் நடனம் புரியும் (219)
+
+சர்வ சத்துரு சங்கா ரத்தடி
+அறிந்தென துள்ளம் அஷ்டலட் சுமிகளில்
+வீரலட் சுமிக்கு விருந்துண வாகச்
+சூரபத்மாவைத் துணித்தகை யதனால்
+இருபத் தேழ்வர்க்கு உவந்தமு தளித்த
+குருபரன் பழநிக் குன்றினி லிருக்கும்
+சின்னக் குழந்தை சேவடி போற்றி
+எனைத்தடுத் தாட்கொள என்றன துள்ளம்
+
+மேவிய வடிவுறும் வேலவ போற்றி
+தேவர்கள் சேனா பதியே போற்றி
+குறமகள் மனமகிழ் கோவே போற்றி
+திறமிகு திவ்விய தேகா போற்றி
+இடும்பா யுதனே இடும்பா போற்றி
+கடம்பா போற்றி கந்தா போற்றி
+வெட்சி புனையும் வேளே போற்றி
+உயர்கிரி கனக சபைக்கு ஓரரசே (235)
+
+மயில்நட மிடுவோய் மலர் அடி சரணம்
+சரணம் சரணம் சரஹண பவ ஓம்
+சரணம் சரணம் சண்முகா சரணம்
+சரணம் சரணம் சண்முகா சரணம்… (240)
+    </article>
+    
+    <div class="footer-note">
+        <p>⚠️ Note: This hymn is for devotional purposes only. Please consult authentic sources for complete and accurate lyrics.</p>
+        <p>© 2026 Devotional Hymns. All rights reserved.</p>
+    </div>
+</div>
+
+<script>
+(function(){
+    const root = document.documentElement;
+    const lyrics = document.getElementById('lyrics');
+    const themeBtn = document.getElementById('theme-toggle');
+    const copyBtn = document.getElementById('copy-btn');
+    const downloadBtn = document.getElementById('download-btn');
+
+    // Theme Logic
+    const savedTheme = localStorage.getItem('devotional-theme');
+    if(savedTheme === 'dark') {
+        root.setAttribute('data-theme', 'dark');
+        themeBtn.innerText = "Light Mode";
+    }
+
+    themeBtn.addEventListener('click', () => {
+        if(root.hasAttribute('data-theme')) {
+            root.removeAttribute('data-theme');
+            localStorage.setItem('devotional-theme', 'light');
+            themeBtn.innerText = "Dark Mode";
+        } else {
+            root.setAttribute('data-theme', 'dark');
+            localStorage.setItem('devotional-theme', 'dark');
+            themeBtn.innerText = "Light Mode";
+        }
+    });
+
+    // Font Size Logic - FIXED
+    const applySize = (size) => {
+        // Remove all size classes first
+        lyrics.classList.remove('small', 'large');
+        
+        // Apply the selected size class
+        if(size === 'small') {
+            lyrics.classList.add('small');
+        } else if(size === 'large') {
+            lyrics.classList.add('large');
+        }
+        
+        // Save to localStorage
+        localStorage.setItem('lyrics-size', size);
+    };
+    
+    // Apply saved font size on load
+    const savedSize = localStorage.getItem('lyrics-size');
+    if(savedSize) {
+        applySize(savedSize);
+    }
+
+    // Button event listeners
+    document.getElementById('inc').addEventListener('click', () => applySize('large'));
+    document.getElementById('dec').addEventListener('click', () => applySize('small'));
+    document.getElementById('reset').addEventListener('click', () => applySize('normal'));
+
+    // Copy Logic
+    copyBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText(lyrics.innerText).then(() => {
+            const originalText = copyBtn.innerText;
+            copyBtn.innerText = "Copied! ✓";
+            setTimeout(() => { copyBtn.innerText = originalText; }, 2000);
+        }).catch(err => {
+            console.error('Copy failed:', err);
+            alert('Copy failed. Please copy manually.');
+        });
+    });
+
+    // Download Logic
+    downloadBtn.addEventListener('click', () => {
+        const content = lyrics.innerText;
+        const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'kandha_sashti_kavasam.txt';
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(() => {
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }, 0);
+    });
+})();
+</script>
+
+</body>
+</html>
+
