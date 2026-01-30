@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devotional Lyrics - Home</title>
+    <style>
+        :root { --bg: #ffffff; --fg: #111827; --accent: #0ea5e9; --muted: #6b7280; }
+        [data-theme="dark"] { --bg: #0b1220; --fg: #e6eef6; --accent: #38bdf8; --muted: #9aa4b2; }
+        
+        body { 
+            background: var(--bg); color: var(--fg); 
+            font-family: -apple-system, system-ui, sans-serif; 
+            margin: 0; padding: 0; transition: background 0.3s;
+        }
+        .container { max-width: 700px; margin: 0 auto; padding: 2rem; }
+        header { border-bottom: 1px solid var(--muted); padding-bottom: 1rem; margin-bottom: 2rem; }
+        h1 { font-size: 1.5rem; margin: 0; }
+        
+        .search-box {
+            width: 100%; padding: 0.8rem; margin-bottom: 2rem;
+            border: 1px solid var(--muted); border-radius: 8px;
+            background: var(--bg); color: var(--fg); font-size: 1rem;
+        }
+
+        .song-list { list-style: none; padding: 0; }
+        .song-item { 
+            margin-bottom: 0.5rem; border-radius: 8px;
+            transition: transform 0.1s;
+        }
+        .song-link {
+            display: block; padding: 1rem; text-decoration: none;
+            color: var(--fg); background: rgba(0,0,0,0.03);
+            border-radius: 8px; border-left: 4px solid var(--accent);
+        }
+        [data-theme="dark"] .song-link { background: rgba(255,255,255,0.05); }
+        .song-link:hover { background: var(--accent); color: white; transform: translateX(5px); }
+        
+        .artist-tag { font-size: 0.85rem; color: var(--muted); display: block; margin-top: 0.3rem; }
+        .song-link:hover .artist-tag { color: #e0f2fe; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>🙏 Devotional Lyrics</h1>
+    </header>
+
+    <input type="text" id="searchInput" class="search-box" placeholder="Search for a song or artist...">
+
+    <ul class="song-list" id="songList">
+        <li class="song-item">
+            <a href="Songs/gananayakane-karunakarane.html" class="song-link">
+                கணநாயகனே கருணாகரனே
+                <span class="artist-tag">Artist: K.Veeramani</span>
+            </a>
+        </li>
+        
+        </ul>
+</div>
+
+<script>
+    // Simple Search Logic
+    const searchInput = document.getElementById('searchInput');
+    const listItems = document.querySelectorAll('.song-item');
+
+    searchInput.addEventListener('input', (e) => {
+        const term = e.target.value.toLowerCase();
+        listItems.forEach(item => {
+            const text = item.textContent.toLowerCase();
+            item.style.display = text.includes(term) ? 'block' : 'none';
+        });
+    });
+
+    // Match Theme with your songs
+    if (localStorage.getItem('devotional-theme') === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+    }
+</script>
+
+</body>
+</html>
