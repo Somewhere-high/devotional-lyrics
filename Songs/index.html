@@ -10,20 +10,18 @@
             --fg: #111827; 
             --accent: #0ea5e9; 
             --muted: #6b7280; 
-            --card-bg: rgba(0,0,0,0.03);
-            --card-hover: #0ea5e9;
-            --border-radius: 12px;
-            --shadow: 0 4px 6px rgba(0,0,0,0.05);
-            --transition: all 0.3s ease;
+            --card-bg: rgba(0,0,0,0.02);
+            --hover-bg: rgba(14, 165, 233, 0.08);
+            --border-radius: 8px;
+            --transition: all 0.2s ease;
         }
         [data-theme="dark"] { 
-            --bg: #0b1220; 
-            --fg: #e6eef6; 
+            --bg: #0a0f1a; 
+            --fg: #e2e8f0; 
             --accent: #38bdf8; 
-            --muted: #9aa4b2; 
-            --card-bg: rgba(255,255,255,0.05);
-            --card-hover: #1e40af;
-            --shadow: 0 4px 20px rgba(0,0,0,0.25);
+            --muted: #94a3b8; 
+            --card-bg: rgba(30, 41, 59, 0.6);
+            --hover-bg: rgba(56, 189, 248, 0.15);
         }
         
         * {
@@ -36,27 +34,27 @@
             background: var(--bg); 
             color: var(--fg); 
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; 
-            line-height: 1.6;
+            line-height: 1.5;
             transition: var(--transition);
-            padding-bottom: 3rem;
+            padding-bottom: 1.5rem;
         }
         
         .container { 
             max-width: 800px; 
             margin: 0 auto; 
-            padding: 1.5rem; 
+            padding: 1rem; 
         }
         
         header { 
             text-align: center; 
-            padding: 2rem 1rem;
-            margin-bottom: 2rem;
+            padding: 1rem 0;
+            margin-bottom: 1.2rem;
             border-bottom: 1px solid var(--muted);
         }
         
         h1 { 
-            font-size: 2.5rem; 
-            margin-bottom: 0.5rem;
+            font-size: 1.8rem; 
+            margin-bottom: 0.3rem;
             background: linear-gradient(to right, #8b5cf6, #ec4899);
             -webkit-background-clip: text;
             background-clip: text;
@@ -66,197 +64,193 @@
         
         .subtitle {
             color: var(--muted);
-            font-size: 1.1rem;
-            margin-top: 0.5rem;
+            font-size: 0.9rem;
         }
         
         .controls {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 2rem;
+            margin-bottom: 1.2rem;
             flex-wrap: wrap;
-            gap: 1rem;
+            gap: 0.8rem;
         }
         
         .search-box {
             flex: 1;
-            min-width: 250px;
-            padding: 0.9rem 1.2rem;
+            min-width: 200px;
+            padding: 0.65rem 1rem;
             border: 1px solid var(--muted);
-            border-radius: 50px;
+            border-radius: 8px;
             background: var(--card-bg);
             color: var(--fg);
-            font-size: 1rem;
+            font-size: 0.95rem;
             transition: var(--transition);
-            box-shadow: var(--shadow);
         }
         
         .search-box:focus {
             outline: none;
             border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.2);
+            box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.2);
         }
         
         .theme-toggle {
             background: var(--card-bg);
             border: 1px solid var(--muted);
             color: var(--fg);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-size: 1rem;
             transition: var(--transition);
-            box-shadow: var(--shadow);
         }
         
         .theme-toggle:hover {
             background: var(--accent);
             color: white;
-            transform: rotate(20deg);
         }
         
-        .song-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1rem;
+        .results-count {
+            text-align: right;
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-bottom: 0.8rem;
+            font-style: italic;
         }
         
-        .song-card {
-            background: var(--card-bg);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border: 1px solid rgba(0,0,0,0.05);
+        .song-list {
+            list-style: none;
             display: flex;
             flex-direction: column;
-            height: 100%;
+            gap: 0.4rem;
+            max-height: 70vh;
+            overflow-y: auto;
+            padding-right: 6px;
         }
         
-        [data-theme="dark"] .song-card {
-            border-color: rgba(255,255,255,0.1);
+        /* Scrollbar styling */
+        .song-list::-webkit-scrollbar {
+            width: 6px;
+        }
+        .song-list::-webkit-scrollbar-track {
+            background: var(--card-bg);
+            border-radius: 3px;
+        }
+        .song-list::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 3px;
+        }
+        [data-theme="dark"] .song-list::-webkit-scrollbar-track {
+            background: rgba(255,255,255,0.1);
         }
         
-        .song-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            border-color: var(--accent);
+        .song-item {
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            background: var(--card-bg);
+            border-left: 3px solid var(--accent);
+        }
+        
+        .song-item:hover {
+            background: var(--hover-bg);
+            transform: translateX(3px);
+            border-left-width: 5px;
         }
         
         .song-link {
             display: block;
-            padding: 1.5rem;
+            padding: 0.75rem 1rem;
             text-decoration: none;
             color: var(--fg);
-            height: 100%;
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
         }
         
         .song-title {
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            line-height: 1.4;
-            color: var(--accent);
+            font-weight: 600;
+            font-size: 1.05rem;
+            margin-right: 0.8rem;
+            flex: 1;
         }
         
         .song-artist {
             color: var(--muted);
-            font-size: 0.95rem;
-            margin-top: auto;
-            padding-top: 0.8rem;
-            border-top: 1px dashed var(--muted);
+            font-size: 0.85rem;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        
+        .song-item:hover .song-title {
+            color: var(--accent);
         }
         
         .empty-state {
             text-align: center;
-            padding: 3rem 1rem;
+            padding: 1.5rem 1rem;
             color: var(--muted);
-            grid-column: 1 / -1;
-        }
-        
-        .empty-state p {
-            margin-top: 1rem;
-            font-size: 1.1rem;
+            font-size: 0.95rem;
         }
         
         .instructions {
             background: var(--card-bg);
             border-radius: var(--border-radius);
-            padding: 1.5rem;
-            margin-top: 2rem;
-            border-left: 4px solid var(--accent);
+            padding: 1rem;
+            margin-top: 1.5rem;
+            border-left: 3px solid var(--accent);
+            font-size: 0.9rem;
         }
         
         .instructions h2 {
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.5rem;
             color: var(--accent);
+            font-size: 1.1rem;
         }
         
-        .instructions ol {
-            padding-left: 1.5rem;
-            margin-top: 0.8rem;
-            color: var(--muted);
+        .instructions ul {
+            padding-left: 1.2rem;
+            margin-top: 0.5rem;
         }
         
         .instructions li {
-            margin-bottom: 0.5rem;
-        }
-        
-        .add-song-section {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border-radius: var(--border-radius);
-            padding: 1.5rem;
-            margin-top: 2rem;
-            text-align: center;
-        }
-        
-        .add-song-section h2 {
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-        
-        .add-song-section p {
-            margin-bottom: 1rem;
-            opacity: 0.9;
-        }
-        
-        .add-song-code {
-            background: rgba(0,0,0,0.2);
-            border-radius: 8px;
-            padding: 1rem;
-            margin: 1rem 0;
-            font-family: monospace;
-            text-align: left;
-            overflow-x: auto;
+            margin-bottom: 0.3rem;
         }
         
         @media (max-width: 600px) {
-            .song-grid {
-                grid-template-columns: 1fr;
-            }
-            
             .controls {
                 flex-direction: column;
                 align-items: stretch;
             }
             
             .theme-toggle {
-                width: 45px;
-                height: 45px;
-                align-self: center;
+                width: 36px;
+                height: 36px;
+                align-self: flex-end;
             }
             
             h1 {
-                font-size: 2rem;
+                font-size: 1.6rem;
+            }
+            
+            .song-link {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.2rem;
+            }
+            
+            .song-artist {
+                white-space: normal;
+                width: 100%;
+                text-align: right;
+                margin-top: 0.2rem;
+            }
+            
+            .results-count {
+                text-align: left;
             }
         }
     </style>
@@ -265,48 +259,37 @@
     <div class="container">
         <header>
             <h1>🙏 Devotional Lyrics</h1>
-            <p class="subtitle">Sacred hymns and devotional songs for spiritual upliftment</p>
+            <p class="subtitle">Sacred hymns and devotional songs</p>
         </header>
         
         <div class="controls">
-            <input type="text" id="searchInput" class="search-box" placeholder="Search for a song or artist...">
+            <input type="text" id="searchInput" class="search-box" placeholder="Search songs...">
             <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">☀️</button>
         </div>
         
-        <div class="song-grid" id="songGrid">
-            <!-- Songs will be dynamically inserted here -->
-        </div>
+        <div class="results-count">Showing <span id="count">0</span> songs</div>
         
-        <div class="add-song-section">
-            <h2>✨ Add New Song</h2>
-            <p>To add a new song, simply scroll to the bottom of this HTML file and add to the songs array:</p>
-            <div class="add-song-code">
-// Add this to the songs array at the bottom of this file:<br>
-{<br>
-&nbsp;&nbsp;title: "Your Song Title",<br>
-&nbsp;&nbsp;artist: "Artist Name",<br>
-&nbsp;&nbsp;filename: "your-song-filename.html"<br>
-}
-            </div>
-            <p><strong>That's it!</strong> Save the file and refresh your browser.</p>
-        </div>
+        <ul class="song-list" id="songList">
+            <!-- Songs will be dynamically inserted here -->
+        </ul>
         
         <div class="instructions">
             <h2>Features</h2>
             <ul>
-                <li>🕗 Press "T" key to toggle between light/dark mode</li>
-                <li>🔍 Search songs by title or artist</li>
-                <li>🌙 Theme preference saved automatically</li>
-                <li>📱 Fully responsive design for all devices</li>
+                <li>Press "T" to toggle theme</li>
+                <li>Search by title or artist</li>
+                <li>Theme preference saved</li>
+                <li>Compact list for 100+ songs</li>
             </ul>
         </div>
     </div>
 
     <script>
         // DOM Elements
-        const songGrid = document.getElementById('songGrid');
+        const songList = document.getElementById('songList');
         const searchInput = document.getElementById('searchInput');
         const themeToggle = document.getElementById('themeToggle');
+        const resultsCount = document.getElementById('count');
         
         // Theme Toggle
         const savedTheme = localStorage.getItem('devotional-theme');
@@ -327,54 +310,62 @@
             }
         });
         
-        // Render Songs
-        function renderSongs(songList) {
-            songGrid.innerHTML = '';
+        // Render Compact Songs List
+        function renderSongs(songListArray) {
+            songList.innerHTML = '';
+            resultsCount.textContent = songListArray.length;
             
-            if (songList.length === 0) {
-                songGrid.innerHTML = `
-                    <div class="empty-state">
-                        <div style="font-size: 3rem; margin-bottom: 1rem;">😕</div>
-                        <h2>No songs found</h2>
-                        <p>Try adjusting your search terms</p>
-                    </div>
+            if (songListArray.length === 0) {
+                songList.innerHTML = `
+                    <li class="empty-state">
+                        No songs found. Try different search terms.
+                    </li>
                 `;
                 return;
             }
             
-            songList.forEach(song => {
-                const songCard = document.createElement('div');
-                songCard.className = 'song-card';
-                songCard.innerHTML = `
+            songListArray.forEach(song => {
+                const li = document.createElement('li');
+                li.className = 'song-item';
+                li.innerHTML = `
                     <a href="${song.filename}" class="song-link">
-                        <div class="song-title">${song.title}</div>
-                        <div class="song-artist">Artist: ${song.artist}</div>
+                        <span class="song-title">${song.title}</span>
+                        <span class="song-artist">${song.artist}</span>
                     </a>
                 `;
-                songGrid.appendChild(songCard);
+                songList.appendChild(li);
             });
         }
         
-        // Search functionality
+        // Search functionality with debounce
+        let searchTimeout;
         searchInput.addEventListener('input', (e) => {
-            const searchTerm = e.target.value.toLowerCase();
-            const filteredSongs = songs.filter(song => 
-                song.title.toLowerCase().includes(searchTerm) || 
-                song.artist.toLowerCase().includes(searchTerm)
-            );
-            renderSongs(filteredSongs);
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                const searchTerm = e.target.value.toLowerCase();
+                const filteredSongs = songs.filter(song => 
+                    song.title.toLowerCase().includes(searchTerm) || 
+                    song.artist.toLowerCase().includes(searchTerm)
+                );
+                renderSongs(filteredSongs);
+            }, 200);
         });
         
-        // Add keyboard shortcut for theme toggle (T key)
+        // Keyboard shortcut for theme toggle (T key)
         document.addEventListener('keydown', (e) => {
             if (e.key === 't' || e.key === 'T') {
                 themeToggle.click();
             }
         });
         
-        // Initialize the app - this will be called after songs array is defined
+        // Initialize the app
         function initApp() {
             renderSongs(songs);
+            
+            // Auto-focus search on mobile
+            if (window.innerWidth < 600) {
+                searchInput.focus();
+            }
         }
     </script>
     
