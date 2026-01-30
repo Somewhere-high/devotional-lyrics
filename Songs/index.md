@@ -4,4 +4,4 @@ title: Songs
 
 # Songs
 
-- [கணநாயகனே கருணாகரனே](./gananayakane-karunakarane.md)
+- [கணநாயகனே கருணாகரனே](./gananayakane-karunakarane.html)
