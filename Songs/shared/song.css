@@ -1,0 +1,109 @@
+/* ================================
+   SONG PAGE – SHARED STYLES
+   ================================ */
+
+/* Layout */
+.song-container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+/* Top Navigation */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  background: var(--bg);
+  border-bottom: 1px solid var(--muted);
+
+  padding: 0.6rem 0;
+  margin-bottom: 1.5rem;
+}
+
+.home-link {
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* Toolbar */
+.toolbar {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+/* Buttons */
+.btn {
+  border: 1px solid var(--muted);
+  background: transparent;
+  color: var(--fg);
+  padding: 0.4rem 0.7rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+}
+
+/* Title & Artist */
+.title {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 0.4rem;
+}
+
+.artist {
+  text-align: center;
+  color: var(--muted);
+  margin-bottom: 2rem;
+}
+
+/* Lyrics Card */
+.lyrics {
+  white-space: pre-line;
+  line-height: 2.4;
+  font-size: 1.15rem;
+
+  padding: 1.8rem 1.6rem;
+  background: var(--card-bg);
+  border-radius: 14px;
+
+  letter-spacing: 0.02rem;
+}
+
+/* Font Size Controls */
+.lyrics.small {
+  font-size: 1rem;
+}
+
+.lyrics.large {
+  font-size: 1.45rem;
+}
+
+/* Elder Mode Enhancements */
+body.elder-mode .lyrics {
+  font-size: 1.55rem;
+  line-height: 2.8;
+}
+
+body.elder-mode .btn {
+  font-size: 1rem;
+}
