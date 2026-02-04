@@ -1,55 +1,43 @@
-
 /* =========================
    GLOBAL ELDER MODE
 ========================= */
 
 (function () {
-  const ELDER_KEY = "elder-mode";
+  const KEY = "elder-mode";
 
   function isElder() {
-    return localStorage.getItem(ELDER_KEY) === "yes";
+    return localStorage.getItem(KEY) === "yes";
   }
 
-  function applyElderMode() {
+  function applyElder() {
     document.body.classList.add("elder-mode");
 
-    // Tamil-only labels (if elements exist)
-    const map = {
-      "theme-toggle": "🌙 இரவு",
-      "auto-scroll-btn": "📜 தானாக வாசிப்பு",
+    const tamilLabels = {
       "copy-btn": "📋 நகல்",
       "download-btn": "⬇ சேமி",
+      "auto-scroll-btn": "📜 தானாக வாசிப்பு",
       "focus-btn": "🧘 பக்தி முறை"
     };
 
-    Object.keys(map).forEach(id => {
+    Object.entries(tamilLabels).forEach(([id, label]) => {
       const el = document.getElementById(id);
-      if (el) el.innerText = map[id];
+      if (el) el.innerText = label;
     });
   }
 
-  function applyNormalMode() {
+  function applyNormal() {
     document.body.classList.remove("elder-mode");
   }
 
-  // Apply on page load
   document.addEventListener("DOMContentLoaded", () => {
-    if (isElder()) {
-      applyElderMode();
-    } else {
-      applyNormalMode();
-    }
+    if (isElder()) applyElder();
+    else applyNormal();
   });
 
-  // Expose toggle for index page
+  // Expose toggle globally
   window.toggleElderMode = function () {
     const enabled = isElder();
-    localStorage.setItem(ELDER_KEY, enabled ? "no" : "yes");
-
-    if (enabled) {
-      applyNormalMode();
-    } else {
-      applyElderMode();
-    }
+    localStorage.setItem(KEY, enabled ? "no" : "yes");
+    enabled ? applyNormal() : applyElder();
   };
 })();
