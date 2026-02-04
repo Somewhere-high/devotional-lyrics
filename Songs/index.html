@@ -253,6 +253,35 @@
                 text-align: left;
             }
         }
+        /* =========================
+   ELDER MODE
+========================= */
+
+body.elder-mode {
+  font-size: 1.15rem;
+}
+
+body.elder-mode h1 {
+  font-size: 2rem;
+}
+
+body.elder-mode .search-box {
+  font-size: 1.05rem;
+  padding: 0.8rem 1rem;
+}
+
+body.elder-mode .song-title {
+  font-size: 1.15rem;
+}
+
+body.elder-mode .song-artist {
+  font-size: 0.95rem;
+}
+
+body.elder-mode .instructions {
+  font-size: 1.05rem;
+}
+
     </style>
 </head>
 <body>
@@ -262,10 +291,14 @@
             <p class="subtitle">Sacred hymns and devotional songs</p>
         </header>
         
-        <div class="controls">
-            <input type="text" id="searchInput" class="search-box" placeholder="Search songs...">
-            <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">☀️</button>
-        </div>
+       <div class="controls">
+  <input type="text" id="searchInput" class="search-box" placeholder="Search songs...">
+  <div style="display:flex; gap:0.5rem;">
+    <button id="elderToggle" class="theme-toggle">🧓</button>
+    <button id="themeToggle" class="theme-toggle">☀️</button>
+  </div>
+</div>
+
         
         <div class="results-count">Showing <span id="count">0</span> songs</div>
         
@@ -283,8 +316,36 @@
             </ul>
         </div>
     </div>
+    
 
     <script>
+
+        const labels = {
+  normal: {
+    title: "🙏 Devotional Lyrics",
+    subtitle: "Sacred hymns and devotional songs",
+    search: "Search songs...",
+    features: "Features",
+    featureList: [
+      "Press \"T\" to toggle theme",
+      "Search by title or artist",
+      "Theme preference saved",
+      "Compact list for 100+ songs"
+    ]
+  },
+  elder: {
+    title: "🙏 பக்திப் பாடல்கள்",
+    subtitle: "புனிதமான தமிழ் பக்திப் பாடல்கள்",
+    search: "பாடலை தேடவும்...",
+    features: "வழிமுறைகள்",
+    featureList: [
+      "பாடலைத் தேட மேலுள்ள பெட்டியை பயன்படுத்தவும்",
+      "ஒரு பாடலைத் தொட அதன் பெயரை அழுத்தவும்",
+      "எழுத்துகள் பெரியதாக காணப்படும்"
+    ]
+  }
+};
+
         // DOM Elements
         const songList = document.getElementById('songList');
         const searchInput = document.getElementById('searchInput');
@@ -309,6 +370,38 @@
                 themeToggle.textContent = '🌙';
             }
         });
+
+        //elder toggle
+            const elderToggle = document.getElementById("elderToggle");
+const headerTitle = document.querySelector("h1");
+const subtitle = document.querySelector(".subtitle");
+const instructionsTitle = document.querySelector(".instructions h2");
+const instructionsList = document.querySelector(".instructions ul");
+
+function applyMode(mode) {
+  headerTitle.textContent = labels[mode].title;
+  subtitle.textContent = labels[mode].subtitle;
+  searchInput.placeholder = labels[mode].search;
+  instructionsTitle.textContent = labels[mode].features;
+
+  instructionsList.innerHTML = "";
+  labels[mode].featureList.forEach(item => {
+    const li = document.createElement("li");
+    li.textContent = item;
+    instructionsList.appendChild(li);
+  });
+}
+
+elderToggle.addEventListener("click", () => {
+  document.body.classList.toggle("elder-mode");
+
+  const isElder = document.body.classList.contains("elder-mode");
+  applyMode(isElder ? "elder" : "normal");
+
+  elderToggle.textContent = isElder ? "🧑" : "🧓";
+  localStorage.setItem("elder-mode", isElder ? "yes" : "no");
+});
+
         
         // Render Compact Songs List
         function renderSongs(songListArray) {
@@ -352,21 +445,32 @@
         });
         
         // Keyboard shortcut for theme toggle (T key)
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 't' || e.key === 'T') {
-                themeToggle.click();
-            }
-        });
+      document.addEventListener('keydown', (e) => {
+  if (document.body.classList.contains("elder-mode")) return;
+  if (e.key === 't' || e.key === 'T') {
+    themeToggle.click();
+  }
+});
+
         
         // Initialize the app
-        function initApp() {
-            renderSongs(songs);
-            
-            // Auto-focus search on mobile
-            if (window.innerWidth < 600) {
-                searchInput.focus();
-            }
-        }
+      function initApp() {
+  renderSongs(songs);
+
+  const elder = localStorage.getItem("elder-mode") === "yes";
+  if (elder) {
+    document.body.classList.add("elder-mode");
+    applyMode("elder");
+    elderToggle.textContent = "🧑";
+  } else {
+    applyMode("normal");
+  }
+
+  if (window.innerWidth < 600 && !elder) {
+    searchInput.focus();
+  }
+}
+
     </script>
     
     <!-- ADD NEW SONGS BELOW THIS LINE -->
