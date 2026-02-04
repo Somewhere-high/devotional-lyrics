@@ -21,6 +21,9 @@
     :root {
         --bg: #ffffff; --fg: #111827; --muted: #6b7280; --accent: #0ea5e9; --maxw: 1200px;
     }
+    html {
+        scroll-behavior: smooth;
+    }
     [data-theme="dark"] { 
         --bg: #0b1220; --fg: #e6eef6; --muted: #9aa4b2; --accent: #38bdf8; 
     }
@@ -653,7 +656,7 @@
         });
     });
 
-    // Auto-scroll functionality
+    // Auto-scroll functionality with smooth scrolling
     function startAutoScroll() {
         if (autoScrollInterval) return; // Already running
         
@@ -661,22 +664,40 @@
         autoScrollBtn.innerText = 'Stop Scroll';
         speedControl.classList.add('visible');
         
-        autoScrollInterval = setInterval(() => {
+        // Use requestAnimationFrame for smoother scrolling
+        let lastTime = performance.now();
+        
+        function smoothScroll(currentTime) {
+            if (!autoScrollInterval) return;
+            
+            const deltaTime = currentTime - lastTime;
+            
+            // Scroll in smaller increments more frequently for smoothness
+            // Speed now ranges from 0.5px to 3px per frame (30-60fps)
+            const scrollAmount = (scrollSpeed / 10) * (deltaTime / 16.67);
+            
             window.scrollBy({
-                top: scrollSpeed,
+                top: scrollAmount,
                 behavior: 'auto'
             });
             
+            lastTime = currentTime;
+            
             // Stop when reaching bottom
-            if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight) {
+            if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight - 10) {
                 stopAutoScroll();
+                return;
             }
-        }, 50);
+            
+            autoScrollInterval = requestAnimationFrame(smoothScroll);
+        }
+        
+        autoScrollInterval = requestAnimationFrame(smoothScroll);
     }
 
     function stopAutoScroll() {
         if (autoScrollInterval) {
-            clearInterval(autoScrollInterval);
+            cancelAnimationFrame(autoScrollInterval);
             autoScrollInterval = null;
         }
         autoScrollBtn.classList.remove('active');
