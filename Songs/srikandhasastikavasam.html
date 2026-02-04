@@ -85,13 +85,22 @@
     }
     
     .lyrics { 
-        white-space: pre-line; line-height: 2.1; font-size: 1.15rem; 
+        line-height: 2.1; font-size: 1.15rem; 
         padding: 2rem; border-radius: 16px; 
         background: rgba(0,0,0,0.03); 
         letter-spacing: 0.02rem;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         margin-bottom: 2rem;
+        white-space: pre-line;
+    }
+    .lyrics b {
+        font-weight: 700;
+        color: var(--accent);
+        font-size: 1.2em;
+    }
+    [data-theme="dark"] .lyrics b {
+        color: #60a5fa;
     }
     [data-theme="dark"] .lyrics { 
         background: rgba(255,255,255,0.05); 
@@ -243,21 +252,22 @@
     <p class="subtitle">தேவராய சுவாமிகள் இயற்றிய பாரம்பரிய பக்தி பாடல்</p>
     <p class="artist">Composer: Devaraya Swamigal | Deity: Lord Murugan</p>
 
-    <article class="lyrics" id="lyrics">குறள் வெண்பா
-
-<b>குறள் வெண்பா</b>
+    <article class="lyrics" id="lyrics">
+        
+      
+ <h1 class="title">குறள் வெண்பா/h1>
 
 துதிப்போர்க்கு வல்வினைபோம்… துன்பம் போம்,
 நெஞ்சில் பதிப்போர்க்குச் செல்வம் பலித்துக் கதித்து ஓங்கும்,
 நிஷ்டையுங் கைகூடும்…
 நிமலர் அருள், கந்தர் சஷ்டி கவசந் தனை….
 
-<b>   காப்பு   </b> 
+<h1 class="title">காப்பு</h1>
 
 அமரர் இடர்தீர அமரம் புரிந்த
 குமரன் அடி நெஞ்சே குறி…
-
-<b>  நூல்</b> 
+              
+<h1 class="title">காப்பு</h1>
 
 சஷ்டியை நோக்க சரவணபவனார்
 சிஷ்டருக் குதவும் செங்கதிர் வேலோன்
@@ -550,8 +560,8 @@
 <!-- Speed Control Panel -->
 <div class="speed-control" id="speedControl">
     <label for="scrollSpeed">Scroll Speed</label>
-    <input type="range" id="scrollSpeed" min="1" max="10" value="3" step="1">
-    <div class="speed-value">Speed: <span id="speedValue">3</span></div>
+    <input type="range" id="scrollSpeed" min="1" max="20" value="5" step="1">
+    <div class="speed-value">Speed: <span id="speedValue">5</span></div>
 </div>
 
 <script>
@@ -569,7 +579,7 @@
 
     // Auto-scroll variables
     let autoScrollInterval = null;
-    let scrollSpeed = 3;
+    let scrollSpeed = 5;
 
     // Theme Logic
     const savedTheme = localStorage.getItem('devotional-theme');
@@ -673,8 +683,8 @@
             const deltaTime = currentTime - lastTime;
             
             // Scroll in smaller increments more frequently for smoothness
-            // Speed now ranges from 0.5px to 3px per frame (30-60fps)
-            const scrollAmount = (scrollSpeed / 10) * (deltaTime / 16.67);
+            // Speed now ranges from 0.2px to 4px per frame (smoother and faster)
+            const scrollAmount = (scrollSpeed / 5) * (deltaTime / 16.67);
             
             window.scrollBy({
                 top: scrollAmount,
